@@ -185,6 +185,8 @@ class ResultList extends ViewableData implements SS_List
                     }
                 }
 
+                $this->invokeWithExtensions('updateRetrievedResults', $retrieved, $found, $needed);
+
                 foreach ($found as $item) {
                     // Safeguards against indexed items which might no longer be in the DB
                     if (array_key_exists($item->getId(), $retrieved[$item->getType()])) {
