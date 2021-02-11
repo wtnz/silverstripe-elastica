@@ -2,13 +2,14 @@
 
 namespace Heyday\Elastica\Jobs;
 
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
+use Heyday\Elastica\ElasticaService;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Versioned\Versioned;
-use Symbiote\QueuedJobs\Services\AbstractQueuedJob;
+use SilverStripe\Core\Injector\Injector;
 use Symbiote\QueuedJobs\Services\QueuedJob;
+use Symbiote\QueuedJobs\Services\AbstractQueuedJob;
 
 /**
  * Class ReindexAfterWriteJob
@@ -72,7 +73,7 @@ class ReindexAfterWriteJob extends AbstractQueuedJob implements QueuedJob
             return;
         }
 
-        $service = Injector::inst()->get('Heyday\Elastica\ElasticaService');
+        $service = Injector::inst()->get(ElasticaService::class);
         $reading_mode = Versioned::get_reading_mode();
         Versioned::set_reading_mode('Stage.Live');
         $versionToIndex = DataObject::get($this->class)->byID($this->id);
