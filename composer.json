@@ -1,8 +1,8 @@
 {
-    "name": "heyday/silverstripe-elastica",
+    "name": "wtnz/silverstripe-elastica",
     "description": "Provides Elastic Search integration for SilverStripe DataObjects using Elastica",
     "type": "silverstripe-vendormodule",
-    "homepage": "http://github.com/heyday/silverstripe-elastica",
+    "homepage": "http://github.com/wtnz/silverstripe-elastica",
     "keywords": [
         "silverstripe",
         "search",
